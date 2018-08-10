@@ -5,7 +5,8 @@ import android.os.Environment;
 import java.io.File;
 
 public class Constants {
-    public static String DESIGN_PACAGE = "com.shishike.calm";
+//    public static String DESIGN_PACAGE = "com.shishike.calm";
+    public static String DESIGN_PACAGE = "com.nbpt.checksim";
     public static String STAT_COLLET_BROADCAT_ACTION = "com.performance.start";
     public static String STOP_COLLET_BROADCAT_ACTION = "com.performance.stop";
     public static long COLLET_DELAY_TIME = 3 * 1000;

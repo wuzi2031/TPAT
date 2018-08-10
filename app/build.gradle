@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'jacoco'
+jacoco {
+    toolVersion = "0.7.9"
+}
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -11,11 +14,32 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+
+        release {
+            storeFile file('calm.keystore')
+            storePassword "calm123"
+            keyAlias "calm"
+            keyPassword "calm123"
+        }
+        develop {
+            storeFile file('develop.jks')
+            storePassword "develop"
+            keyAlias "calm"
+            keyPassword "develop"
+        }
+
+    }
     buildTypes {
+        debug{
+            testCoverageEnabled = 'true'
+            signingConfig signingConfigs.release
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -37,4 +61,5 @@ dependencies {
     implementation files('libs/jfreechart-1.0.19.jar')
     implementation 'com.rabbitmq:amqp-client:5.0.0'
     implementation 'org.slf4j:slf4j-android:1.7.25'
+    androidTestImplementation 'com.jayway.android.robotium:robotium-solo:5.2.1'
 }

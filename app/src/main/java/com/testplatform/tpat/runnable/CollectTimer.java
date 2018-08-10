@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 
+import com.testplatform.tpat.bean.TrafficInfo;
 import com.testplatform.tpat.common.Constants;
 import com.testplatform.tpat.performance.PerInfo;
 import com.testplatform.tpat.utils.DateUtil;
@@ -35,6 +36,7 @@ public class CollectTimer extends TimerTask {
         String time = DateUtil.getCurrTime();
         double cpuUsage = perInfo.getCpuUsage();//cpu使用情况
         Long availMem = perInfo.getAvailMemory();//剩余内存
+        TrafficInfo trafficInfo=perInfo.getTrafficInfo();
         Long rxTraffic = perInfo.getRxTraffic(uid);
         Long txRraffic = perInfo.getTxTraffic(uid);
         String[][] datalist = new String[1][5];
